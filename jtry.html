@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert JSON Data to HTML Table</title>
+    <style>
+        th, td, p, input {
+            font:14px Verdana;
+        }
+        table, th, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+        th {
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" onclick="CreateTableFromJSON()" value="Create Table From JSON" />
+    <p id="showData"></p>
+
+</body>
+<script>
+    
+function CreateTableFromJSON() {
+   
+
+let data = {
+	name: "Vishal",
+	class: "IT-D",
+	marks:[{
+		subject: "OOAD",
+		mark: "80",
+		grade: "A"
+        },{
+        subject: "AI",
+        mark: "90",
+        grade: "S"
+        }]
+    }
+
+//code to append the data.
+
+
+ 
+for (let dat in data)
+{
+     if (dat=='marks')
+     {
+ 
+
+let table = document.createElement('table');
+         let marks = data['marks'];
+         let len = marks.length;
+         
+         var tablehead = table.insertRow();
+         
+         for(var i = 0 ;i<3;i++)
+         {
+            var th = document.createElement('th');
+             
+            if(i==0)
+                th.innerHTML='<th>subject</th>';
+            if(i==1)
+                th.innerHTML='<th>marks</th>';
+            if(i==2)
+                th.innerHTML='<th>grade</th>';
+
+             tablehead.appendChild(th);
+         }
+    
+         for(let i=0;i<len;i++){
+            var row =  table.insertRow();
+
+            for(key2 in marks[i]){
+                var cell = row.insertCell();
+                cell.innerText = marks[i][key2];
+            }
+         }
+         document.body.appendChild(table);
+}
+
+else
+
+    {
+        let spanelt = document.createElement("span");
+        spanelt.id = dat;
+        spanelt.innerText = data[dat] + "    ";
+        document.body.appendChild(spanelt);
+
+    }
+}
+}
+</script>
+</html>
