@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get the details.</p>
+<button onclick="myFunction()">Press</button>
+
+ <span id="demo"></span>
+ 
+      
+
+<script>
+var data = [{
+	name: "Vishal",
+	age: 18,
+	class: "D",
+},{
+	name: "Raj",
+	age: 19,
+	class: "C",
+},{
+	name: "Kumar",
+	age: 20,
+	class: "D",
+}];
+
+function students_print(data) {
+   var eg = `<tr><tbody>
+            <td>${data.name}</td>
+            <td>${data.age}</td>
+            <td>${data.class}</td>
+            </tbody></tr>`;
+  return eg;
+}
+
+
+
+function myFunction() {
+    
+    var div=document.getElementById("demo");
+div.innerHTML=`
+<table id="table" border="1" >
+       <thead>
+       <tr>
+       <th>name</th>
+       <th>age</th>
+       <th>class</th>
+       </tr>
+       </thead> ${data.map(students_print)}
+      </table>`
+  
+
+  
+}
+</script>
+
+</body>
+</html>
